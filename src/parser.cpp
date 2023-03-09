@@ -7,7 +7,7 @@
 
 namespace maze {
 
-    std::vector<Direction> toOpenings(const int &value)
+    std::vector<Direction> getOpenings(const int &value)
     {
         std::vector<Direction> tmp;
         if (~value & 1) tmp.push_back(Direction::NORTH);
@@ -17,7 +17,7 @@ namespace maze {
         return tmp;
     }
 
-    std::vector<Direction> toWalls(const int &value)
+    std::vector<Direction> getWalls(const int &value)
     {
         std::vector<Direction> tmp;
         if (value & 1) tmp.push_back(Direction::NORTH);
@@ -40,37 +40,34 @@ namespace maze {
         int current = 0, seed = 0, width = 0, height = 0, entry = 0, exit = 0;
         Grid grid;
         while (std::getline(file, line)) {
-            switch (current)
-            {
-            case 0:
-                sscanf(line.c_str(), "%d", &seed);
-                break;
-            case 1:
-                sscanf(line.c_str(), "%d %d", &width, &height);
-                break;
-            case 2:
-                sscanf(line.c_str(), "%d %d", &entry, &exit);
-                break;
-            default:
-                stringstream ss(line);
-                vector<Cell> row;
-                while(ss.good())
-                {
-                    string substr;
-                    getline(ss, substr, ',');
-                    auto values = atoi(substr.c_str());
-                    auto openings = toOpenings(values);
-                    auto walls = toWalls(values);
-                    auto cell = Cell(walls, openings);
-                    row.push_back(cell);
-                }
-                grid.push_back(row);
-                break;
+            switch (current++) {
+                case 0:
+                    sscanf(line.c_str(), "%d", &seed);
+                    break;
+                case 1:
+                    sscanf(line.c_str(), "%d %d", &width, &height);
+                    break;
+                case 2:
+                    sscanf(line.c_str(), "%d %d", &entry, &exit);
+                    break;
+                default:
+                    stringstream ss(line);
+                    vector<Cell> row;
+                    while(ss.good())
+                    {
+                        string substr;
+                        getline(ss, substr, ',');
+                        auto values = atoi(substr.c_str());
+                        auto openings = getOpenings(values);
+                        auto walls = getWalls(values);
+                        auto cell = Cell(walls, openings);
+                        row.push_back(cell);
+                    }
+                    grid.push_back(row);
+                    break;
             }
-            current++;
         }
-        auto maze = new Maze(seed, width, height, entry, exit, grid);
-        return maze;
+        return new Maze(seed, width, height, entry, exit, grid);
     }
 
 }
