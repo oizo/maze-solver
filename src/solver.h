@@ -8,7 +8,6 @@ namespace maze {
     class Solver
     {
     private:
-        std::vector<Coordinate> visited;
         Maze &maze;
     public:
         Solver(Maze &maze);

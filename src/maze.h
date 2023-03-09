@@ -9,7 +9,8 @@ namespace maze
 	class Maze
 	{
 	public:
-		Maze(int seed, int width, int height, int entry, int exit, Grid grid);
+		Maze(int& seed, int& width, int& height, int& entry, int& exit, Grid& grid)
+			: seed(seed), width(width), height(height), entry(entry), exit(exit), grid(std::move(grid)) {}
 		const int seed;
 		const int width;
 		const int height;

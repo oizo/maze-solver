@@ -9,15 +9,12 @@ include_directories(${PROJECT_SOURCE_DIR})
 set(MY_SOURCES
     src/main.cpp
     src/cell.h
-    src/cell.cpp
     src/coordinate.h
-    src/coordinate.cpp
     src/parser.h
     src/parser.cpp
     src/solver.h
     src/solver.cpp
     src/maze.h
-    src/maze.cpp
     src/utils.h
     src/utils.cpp
 )

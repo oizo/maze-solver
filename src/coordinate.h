@@ -7,12 +7,11 @@ namespace maze
     class Coordinate
     {
     public:
-        Coordinate(int x, int y);
+        Coordinate(int x, int y) : x(x), y(y) {};
         const int x;
         const int y;
-        bool visited = false;
         std::string toString() const {
-            return "x=" + std::to_string(x) + ", y=" + std::to_string(y) + ", visited=" + std::to_string(visited);
+            return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
         };
     };
 }
