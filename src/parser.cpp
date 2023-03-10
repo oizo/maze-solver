@@ -27,7 +27,7 @@ namespace maze {
         return tmp;
     }
 
-    Maze* Parser::fromFilePath(const std::string& path)
+    Maze* Parser::fromFilePath(const std::string &path)
     {
         // We should check the file format, but for now we'll assume proprietary
         std::ifstream file;

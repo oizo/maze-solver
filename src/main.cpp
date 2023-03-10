@@ -20,9 +20,7 @@ int main(int argc, char const *argv[])
 
     auto solver = maze::Solver(*maze);
     auto solution = solver.solve();
-
-    std::cout << maze::draw(*maze) << std::endl;
-
+    std::cout << maze::render(*maze) << std::endl;
     delete maze;
     return 0;
 }

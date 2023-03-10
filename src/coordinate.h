@@ -10,8 +10,10 @@ namespace maze
         Coordinate(int x, int y) : x(x), y(y) {};
         const int x;
         const int y;
-        std::string toString() const {
-            return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
-        };
     };
+
+    inline std::ostream &operator<< (std::ostream &os, Coordinate const &c) {
+        os << "Coord[x=" << c.x << ", y=" << c.y << "]";
+        return os;
+    }
 }

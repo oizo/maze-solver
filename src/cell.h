@@ -1,7 +1,6 @@
 #pragma once
 #include <algorithm>
 #include <vector>
-#include "src/coordinate.h"
 #include "src/direction.h"
 
 namespace maze
@@ -18,4 +17,28 @@ namespace maze
 		bool visited = false;
 		bool solution = false;
 	};
+
+    inline std::ostream &operator<< (std::ostream &os, Cell const &c) {
+        os << "visited=" << c.visited << ", solution=" << c.solution;
+		os << ", openings[";
+		bool first = true;
+		for (auto o = c.openings.begin(); o != c.openings.end(); ++o) {
+			if (!first) {
+				os << ", ";
+			}
+			first = false;
+			os << (*o);
+		}
+		os << "], walls[";
+		first = true;
+		for (auto w = c.walls.begin(); w != c.walls.end(); ++w) {
+			if (!first) {
+				os << ", ";
+			}
+			first = false;
+			os << (*w);
+		}
+		os << "]";
+        return os;
+    }
 }

@@ -7,16 +7,18 @@ project(Maze VERSION 0.1.0)
 include_directories(${PROJECT_SOURCE_DIR})
 
 set(MY_SOURCES
-    src/main.cpp
     src/cell.h
     src/coordinate.h
-    src/parser.h
-    src/parser.cpp
-    src/solver.h
-    src/solver.cpp
+    src/direction.h
+    src/main.cpp
     src/maze.h
-    src/utils.h
+    src/move.h
+    src/parser.cpp
+    src/parser.h
+    src/solver.cpp
+    src/solver.h
     src/utils.cpp
+    src/utils.h
 )
 
 add_executable(maze ${MY_SOURCES})
