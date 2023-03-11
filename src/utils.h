@@ -9,7 +9,7 @@ namespace maze {
         char wallH = '-';
         char wallV = '|';
         char visited = '.';
-        char solution = '*';
+        char solution = '#';
         char empty = ' ';
         char entry = 'v';
         char exit = 'v';

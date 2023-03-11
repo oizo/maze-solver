@@ -17,7 +17,6 @@ namespace maze
 		const int height;
 		const int entry;
 		const int exit;
-		std::vector<Move> moves;
 		Grid grid;
 	};
 }

@@ -19,9 +19,11 @@ int main(int argc, char const *argv[])
         return 0;
     }
 
-    auto solver = maze::Solver(*maze);
-    auto solution = solver.solve();
-    std::cout << maze::render(*maze) << std::endl;
+    auto solver = maze::Solver();
+    auto solution = solver.solve(*maze);
+    maze::RenderConfig rc;
+    rc.visited = ' ';
+    std::cout << maze::render(*maze, rc) << std::endl;
     delete maze;
     return 0;
 }

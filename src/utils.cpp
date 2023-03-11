@@ -38,7 +38,7 @@ namespace maze
                 top += rc.corner;
                 top += contains(c.walls, Direction::NORTH) ? rc.wallH : rc.empty;
                 botttom += contains(c.walls, Direction::WEST) ? rc.wallV : rc.empty;
-                botttom += c.move ? (c.move->isPathToExit ? rc.solution : rc.visited) : rc.empty;
+                botttom += c.entry ? (c.exit ? rc.solution : rc.visited) : rc.empty;
             }
             top += rc.corner;
             botttom += rc.wallV;
@@ -50,7 +50,7 @@ namespace maze
         std::string bottomRow;
         bottomRow += rc.corner;
         for (auto cell = grid.back().begin(); cell != grid.back().end(); ++cell) {
-            bottomRow += contains((*cell).openings, Direction::SOUTH) ? rc.empty : rc.wallV;
+            bottomRow += contains((*cell).openings, Direction::SOUTH) ? rc.empty : rc.wallH;
             bottomRow += rc.corner;
         }
         result += bottomRow + "\n";

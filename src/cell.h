@@ -15,13 +15,12 @@ namespace maze
 			: walls(std::move(walls)), openings(std::move(openings)) {};
 		const std::vector<Direction> openings;
 		const std::vector<Direction> walls;
-		bool visited = false;
-		bool solution = false;
-		Move *move;
+		Coordinate *entry = nullptr;
+		Coordinate *exit = nullptr;
 	};
 
     inline std::ostream &operator<< (std::ostream &os, Cell const &c) {
-        os << "visited=" << c.visited << ", solution=" << c.solution;
+        os << "entry=" << c.entry << ", exit=" << c.exit;
 		os << ", openings[";
 		bool first = true;
 		for (auto o = c.openings.begin(); o != c.openings.end(); ++o) {

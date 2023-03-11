@@ -9,9 +9,9 @@ namespace maze {
     class Solver
     {
     private:
-        Maze &maze;
+        bool solve(Maze &maze, Coordinate &from, Coordinate &current);
     public:
-        Solver(Maze &maze);
-        bool solve();
+        Solver() {};
+        bool solve(Maze &maze);
     };
 }
