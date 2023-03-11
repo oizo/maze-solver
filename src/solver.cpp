@@ -45,11 +45,10 @@ namespace maze {
         }
 
         const int index = maze.moves.size() - 1;
-        auto &move = maze.moves[index];
-        auto &cell = maze.grid[move.coord.y][move.coord.x];
+        auto &cell = maze.grid[maze.moves[index].coord.y][maze.moves[index].coord.x];
 
         // Check if we're done
-        if (move.coord.x == maze.exit - 1 && move.coord.y == maze.height - 1) {
+        if (maze.moves[index].coord.x == maze.exit - 1 && maze.moves[index].coord.y == maze.height - 1) {
             maze.moves[index].isPathToExit = true;
             return true;
         }
@@ -68,11 +67,11 @@ namespace maze {
         // Check neighbouring cells
         auto openings = cell.openings;
         for (auto opening : openings) {
-            if (move.entryFrom == opening) {
+            if (maze.moves[index].entryFrom == opening) {
                 // Don't move back in the direction we came from
                 continue;
             }
-            auto nextMove = createNextMove(move.coord, opening);
+            auto nextMove = createNextMove(maze.moves[index].coord, opening);
             maze.moves.push_back(nextMove);
             bool completed = moveTo(maze);
             if (completed) {
