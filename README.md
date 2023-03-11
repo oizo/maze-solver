@@ -33,6 +33,6 @@ Then view and evaluate the results with kcachegrind:
 
 | Version | 42x60_16793.dat | 400x566_11860.dat |
 |---------|-----------------|-------------------|
-| v0.1.0  |         20.172s |               N/A |
-| v0.2.0  |          0.028s |           43.691s |
-| v0.3.0  |          0.007s |            0.366s |
+| [v0.1.0](https://github.com/oizo/maze-solver/releases/tag/v0.1.0)  |         20.172s |               N/A |
+| [v0.2.0](https://github.com/oizo/maze-solver/releases/tag/v0.1.0)  |          0.028s |           43.691s |
+| [v0.3.0](https://github.com/oizo/maze-solver/releases/tag/v0.1.0)  |          0.007s |            0.366s |
