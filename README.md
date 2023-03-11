@@ -12,7 +12,7 @@ sudo apt-get install build-essential cmake
 ### Build with cmake
 
 ```bash
-cmake .;`
+cmake .;
 cmake --build ./
 ```
 
