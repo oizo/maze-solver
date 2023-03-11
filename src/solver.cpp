@@ -49,7 +49,8 @@ namespace maze {
 
         // Check if we're done
         if (maze.moves[index].coord.x == maze.exit - 1 && maze.moves[index].coord.y == maze.height - 1) {
-            maze.moves[index].isPathToExit = true;
+            cell.move = &maze.moves[index];
+            cell.move->isPathToExit = true;
             return true;
         }
 
@@ -76,7 +77,8 @@ namespace maze {
             maze.moves.push_back(nextMove);
             bool completed = moveTo(maze);
             if (completed) {
-                maze.moves[index].isPathToExit = true;
+                cell.move = &maze.moves[index];
+                cell.move->isPathToExit = true;
                 return true;
             }
         }

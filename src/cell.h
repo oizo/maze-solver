@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include "src/direction.h"
+#include "src/move.h"
 
 namespace maze
 {
@@ -16,6 +17,7 @@ namespace maze
 		const std::vector<Direction> walls;
 		bool visited = false;
 		bool solution = false;
+		Move *move;
 	};
 
     inline std::ostream &operator<< (std::ostream &os, Cell const &c) {
