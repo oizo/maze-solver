@@ -15,13 +15,14 @@ namespace maze
         ", exit=" + std::to_string(maze.exit) + " ]";
     }
 
-    Move* findMove(const Maze &maze, int &x, int &y) {
-        for (auto move : maze.moves) {
-            if (move.coord.x == x && move.coord.y == y) {
-                return new Move(move);
+    int findMove(const Maze &maze, int &x, int &y) {
+        for (int i = 0; i < maze.moves.size(); ++i) {
+            auto &m = maze.moves[i];
+            if (m.coord.x == x && m.coord.y == y) {
+                return i;
             }
         }
-        return nullptr;
+        return -1;
     }
 
     std::string render(const Maze &maze, const RenderConfig &rc) {
@@ -47,8 +48,8 @@ namespace maze
                 top += rc.corner;
                 top += contains(c.walls, Direction::NORTH) ? rc.wallH : rc.empty;
                 botttom += contains(c.walls, Direction::WEST) ? rc.wallV : rc.empty;
-                auto move = findMove(maze, x, y);
-                botttom += move ? (move->isPathToExit ? rc.solution : rc.visited) : rc.empty;
+                auto index = findMove(maze, x, y);
+                botttom += index >= 0 ? (maze.moves[index].isPathToExit ? rc.solution : rc.visited) : rc.empty;
             }
             top += rc.corner;
             botttom += rc.wallV;

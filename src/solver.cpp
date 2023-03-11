@@ -54,10 +54,11 @@ namespace maze {
         }
 
         // Check if we're running into some recursion issues
-        if (visited(maze.moves)) {
-            maze.moves.pop_back();
-            return false;
-        }
+        // TODO Visited function is way too slow, needs to be fixed
+        // if (visited(maze.moves)) {
+        //     maze.moves.pop_back();
+        //     return false;
+        // }
 
         // Check if we hit a dead end
         if (cell.walls.size() == 3) {

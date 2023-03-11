@@ -8,9 +8,10 @@
 int main(int argc, char const *argv[])
 {
     if (argc < 2) {
-        cout << "Usage: " << std::string(argv[0]) << " <path-to-maze>" << std::endl;
+        std::cout << "Usage: " << std::string(argv[0]) << " <path-to-maze>" << std::endl;
         return 0;
     }
+
     auto path = std::string(argv[1]);
     auto parser = maze::Parser();
     auto maze = parser.fromFilePath(path);
