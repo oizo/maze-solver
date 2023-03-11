@@ -20,7 +20,7 @@ cmake --build ./
 
 `maze <path-to-maze>`
 
-## Debugging, performance and profiling
+## Debugging and profiling
 sudo apt-get install gdb valgrind kcachegrind
 
 To use valgrind to analyse and profile the application:
@@ -28,3 +28,11 @@ To use valgrind to analyse and profile the application:
 
 Then view and evaluate the results with kcachegrind:
 `kcachegrind callgrind.out.<pid>`
+
+## Performance
+
+| Version | 42x60_16793.dat | 400x566_11860.dat |
+|---------|-----------------|-------------------|
+| v0.1.0  |         20.172s |               N/A |
+| v0.2.0  |          0.028s |           43.691s |
+| v0.3.0  |          0.007s |            0.366s |
