@@ -38,7 +38,7 @@ namespace maze {
         }
         std::string line;
         int current = 0, seed = 0, width = 0, height = 0, entry = 0, exit = 0;
-        Grid grid;
+        Grid *grid = new Grid();
         while (std::getline(file, line)) {
             switch (current++) {
                 case 0:
@@ -52,7 +52,7 @@ namespace maze {
                     break;
                 default:
                     stringstream ss(line);
-                    vector<Cell> row;
+                    auto *row = new std::vector<Cell*>();
                     while(ss.good())
                     {
                         string substr;
@@ -60,10 +60,10 @@ namespace maze {
                         auto values = atoi(substr.c_str());
                         auto openings = getOpenings(values);
                         auto walls = getWalls(values);
-                        auto cell = Cell(walls, openings);
-                        row.push_back(cell);
+                        auto *cell = new Cell(walls, openings);
+                        row->push_back(cell);
                     }
-                    grid.push_back(row);
+                    grid->push_back(row);
                     break;
             }
         }

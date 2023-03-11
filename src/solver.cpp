@@ -25,23 +25,23 @@ namespace maze {
 
     bool Solver::solve(Maze &maze, Coordinate &from, Coordinate &current) {
 
-        auto &cell = maze.grid[current.y][current.x];
-        cell.entry = &from;
+        auto cell = maze.grid->at(current.y)->at(current.x);
+        cell->entry = &from;
 
         // Check if we're done
         if (current.x == maze.exit - 1 && current.y == maze.height - 1) {
-            cell.exit = &current;
+            cell->exit = &current;
             return true;
         }
 
         // Check if we hit a dead end
-        if (cell.walls.size() == 3) {
+        if (cell->walls.size() == 3) {
             return false;
         }
 
         // Check neighbouring cells
         auto entryFrom = getDirectionFrom(from, current);
-        for (auto opening : cell.openings) {
+        for (auto opening : cell->openings) {
             if (entryFrom == opening) {
                 // Don't move back in the direction we came from
                 continue;
@@ -49,7 +49,7 @@ namespace maze {
             auto nextCoord = generateNextCoordinate(current, opening);
             bool solved = solve(maze, current, nextCoord);
             if (solved) {
-                cell.exit = &nextCoord;
+                cell->exit = &nextCoord;
                 return true;
             }
         }

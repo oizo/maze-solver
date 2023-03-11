@@ -30,15 +30,15 @@ namespace maze
         result += entryIndicator + "\n";
 
         // Build maze cell by cell
-        for (int y = 0; y < grid.size(); ++y) {
+        for (int y = 0; y < grid->size(); ++y) {
             std::string top;
             std::string botttom;
-            for (int x = 0; x < grid[y].size(); ++x) {
-                auto &c = grid[y][x];
+            for (int x = 0; x < grid->at(y)->size(); ++x) {
+                auto *c = grid->at(y)->at(x);
                 top += rc.corner;
-                top += contains(c.walls, Direction::NORTH) ? rc.wallH : rc.empty;
-                botttom += contains(c.walls, Direction::WEST) ? rc.wallV : rc.empty;
-                botttom += c.entry ? (c.exit ? rc.solution : rc.visited) : rc.empty;
+                top += contains(c->walls, Direction::NORTH) ? rc.wallH : rc.empty;
+                botttom += contains(c->walls, Direction::WEST) ? rc.wallV : rc.empty;
+                botttom += c->entry ? (c->exit ? rc.solution : rc.visited) : rc.empty;
             }
             top += rc.corner;
             botttom += rc.wallV;
@@ -49,8 +49,8 @@ namespace maze
         // Build bottom row of maze
         std::string bottomRow;
         bottomRow += rc.corner;
-        for (auto cell = grid.back().begin(); cell != grid.back().end(); ++cell) {
-            bottomRow += contains((*cell).openings, Direction::SOUTH) ? rc.empty : rc.wallH;
+        for (auto cell = grid->back()->begin(); cell != grid->back()->end(); ++cell) {
+            bottomRow += contains((*cell)->openings, Direction::SOUTH) ? rc.empty : rc.wallH;
             bottomRow += rc.corner;
         }
         result += bottomRow + "\n";
