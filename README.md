@@ -7,7 +7,7 @@ Maze solver is a learning project, focused on learning new technology - in this 
 The instructions make the assumption that you are on a Debian-based distribution, e.g. Ubuntu or Linux Mint. You will need to install a couple of packages to easily build the maze solver.
 
 ### Install dependencies
-sudo apt-get install build-essential cmake
+sudo apt-get install build-essential gdb cmake
 
 ### Build with cmake
 
