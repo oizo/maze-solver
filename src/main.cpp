@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
     auto solver = maze::Solver();
     auto solution = solver.solve(*maze);
     maze::RenderConfig rc;
-    rc.visited = ' ';
+    // rc.visited = ' ';
     std::cout << maze::render(*maze, rc) << std::endl;
     delete maze;
     return 0;
