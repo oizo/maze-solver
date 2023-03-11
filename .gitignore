@@ -52,6 +52,6 @@
 **/compile_commands.json
 CPackConfig.cmake
 CPackSourceConfig.cmake
-	
-build/*
 
+# remove binary
+maze
